@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_younioum_subscriptions
+    description: Staged Younioum subscriptions data
+    columns:
+      - name: orderNumber
+        description: Unique identifier for the order
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_younium_invoices
+    description: Staged Younium invoices data
+    columns:
+      - name: invoiceNumber
+        description: Unique identifier for the invoice
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_hubspot_deals
+    description: Staged Hubspot deals data
+    columns:
+      - name: dealname
+        description: Name of the deal
+        tests:
+          - not_null
