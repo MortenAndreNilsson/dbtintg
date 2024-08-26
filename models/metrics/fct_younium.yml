@@ -33,6 +33,7 @@ semantic_models:
         label: "Product Name"
       - name: currency
         type: categorical
+        expr: currency
         label: "Currency"
       - name: product_category
         type: categorical
@@ -51,6 +52,7 @@ semantic_models:
       - name: quantity
         description: "Quantity of products"
         agg: sum
+        expr: quantity
       - name: line_total
         description: "Total for the line item"
         agg: sum
@@ -98,6 +100,7 @@ semantic_models:
         label: "Order Type"
       - name: status
         type: categorical
+        expr: status
         label: "Status"
 
     measures:
@@ -138,18 +141,23 @@ semantic_models:
         label: "Deal Created Date"
       - name: company_name
         type: categorical
+        expr: company_name
         label: "Company Name"
       - name: pipeline_label
         type: categorical
+        expr: pipeline_label
         label: "Pipeline"
       - name: stage_label
         type: categorical
+        expr: stage_label
         label: "Stage"
       - name: business_area
         type: categorical
+        expr: business_area
         label: "Business Area"
       - name: bu_country
         type: categorical
+        expr: bu_country
         label: "Country"
 
     measures:
