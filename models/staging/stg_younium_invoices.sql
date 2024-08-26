@@ -1,0 +1,20 @@
+SELECT
+    invoiceNumber,
+    status,
+    accountName,
+    accountNumber,
+    invoiceDate,
+    currency,
+    exchangeRate,
+    totalAmount,
+    totalAmountNOK,
+    productNumber,
+    productName,
+    chargeDescription,
+    quantity,
+    price,
+    lineTotal,
+    lineTotalNOK,
+    productcat,
+    productCategory
+FROM {{ source('swint_query_views', 'Younium_Invoices_Master') }}

@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: swint_query_views
+    database: test-disco-cm  
+    schema: swint_query_views
+    tables:
+      - name: Younioum_Subscriptions_View
+      - name: Younium_Invoices_Master
+      - name: Hubspot_Deals_Master
+      - name: Younium_Subscriptions_View
