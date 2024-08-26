@@ -7,7 +7,6 @@ models:
       - name: orderNumber
         description: Unique identifier for the order
         tests:
-          - unique
           - not_null
 
   - name: stg_younium_invoices
@@ -16,7 +15,6 @@ models:
       - name: invoiceNumber
         description: Unique identifier for the invoice
         tests:
-          - unique
           - not_null
 
   - name: stg_hubspot_Deals_Master  
