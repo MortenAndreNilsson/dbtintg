@@ -1,0 +1,208 @@
+semantic_models:
+  - name: younium_invoices
+    defaults:
+      agg_time_dimension: invoice_date
+    description: "Younium invoices master table. One row per invoice line."
+    model: ref('stg_younium_invoices')
+
+    entities:
+      - name: invoice_number
+        type: primary
+      - name: account_number
+        type: foreign
+      - name: product_number
+        type: foreign
+
+    dimensions:
+      - name: invoice_date
+        type: time
+        type_params:
+          time_granularity: day
+        label: "Date of Invoice"
+      - name: account_name
+        type: categorical
+        label: "Account Name"
+      - name: product_name
+        type: categorical
+        label: "Product Name"
+      - name: currency
+        type: categorical
+        label: "Currency"
+      - name: product_category
+        type: categorical
+        label: "Product Category"
+
+    measures:
+      - name: total_amount
+        description: "The total amount of the invoice line"
+        agg: sum
+        expr: totalAmount
+      - name: total_amount_nok
+        description: "The total amount in NOK"
+        agg: sum
+        expr: totalAmountNOK
+      - name: quantity
+        description: "Quantity of products"
+        agg: sum
+      - name: line_total
+        description: "Total for the line item"
+        agg: sum
+      - name: invoice_count
+        description: "Number of invoices"
+        expr: invoice_number
+        agg: count_distinct
+
+  - name: younioum_subscriptions
+    defaults:
+      agg_time_dimension: order_date
+    description: "Younioum subscriptions view. One row per subscription."
+    model: ref('stg_younioum_subscriptions')
+
+    entities:
+      - name: order_number
+        type: primary
+      - name: account_number
+        type: foreign
+      - name: product_number
+        type: foreign
+
+    dimensions:
+      - name: order_date
+        type: time
+        type_params:
+          time_granularity: day
+        label: "Date of Order"
+      - name: account_name
+        type: categorical
+        label: "Account Name"
+      - name: product_name
+        type: categorical
+        label: "Product Name"
+      - name: order_type
+        type: categorical
+        label: "Order Type"
+      - name: status
+        type: categorical
+        label: "Status"
+
+    measures:
+      - name: cmrr_amount
+        description: "CMRR base currency amount"
+        agg: sum
+        expr: cmrr_base_currency_amount
+      - name: tcv_amount
+        description: "TCV base currency amount"
+        agg: sum
+        expr: tcv_base_currency_amount
+      - name: acv_amount
+        description: "ACV base currency amount"
+        agg: sum
+        expr: acv_base_currency_amount
+      - name: subscription_count
+        description: "Number of subscriptions"
+        expr: order_number
+        agg: count_distinct
+
+  - name: hubspot_deals
+    defaults:
+      agg_time_dimension: deal_created_at
+    description: "Hubspot deals master table. One row per deal."
+    model: ref('stg_hubspot_Deals_Master')
+
+    entities:
+      - name: deal_name
+        type: primary
+
+    dimensions:
+      - name: deal_created_at
+        type: time
+        type_params:
+          time_granularity: day
+        label: "Deal Created Date"
+      - name: company_name
+        type: categorical
+        label: "Company Name"
+      - name: pipeline_label
+        type: categorical
+        label: "Pipeline"
+      - name: stage_label
+        type: categorical
+        label: "Stage"
+      - name: business_area
+        type: categorical
+        label: "Business Area"
+      - name: bu_country
+        type: categorical
+        label: "Country"
+
+    measures:
+      - name: deal_count
+        description: "Number of deals"
+        expr: deal_name
+        agg: count_distinct
+
+metrics:
+  - name: total_invoice_amount
+    description: "Sum of invoice amounts"
+    label: "Total Invoice Amount"
+    type: simple
+    type_params:
+      measure:
+        name: total_amount
+        fill_nulls_with: 0
+
+  - name: total_invoice_amount_nok
+    description: "Sum of invoice amounts in NOK"
+    label: "Total Invoice Amount (NOK)"
+    type: simple
+    type_params:
+      measure:
+        name: total_amount_nok
+        fill_nulls_with: 0
+
+  - name: invoice_count
+    description: "Number of Invoices"
+    type: simple
+    label: "Invoice Count"
+    type_params:
+      measure: invoice_count
+
+  - name: avg_invoice_value
+    label: "Average Invoice Value"
+    description: "Average value of invoices"
+    type: ratio
+    type_params:
+      numerator: total_invoice_amount
+      denominator: invoice_count
+
+  - name: total_cmrr
+    description: "Total CMRR (Contracted Monthly Recurring Revenue)"
+    label: "Total CMRR"
+    type: simple
+    type_params:
+      measure:
+        name: cmrr_amount
+        fill_nulls_with: 0
+
+  - name: total_tcv
+    description: "Total TCV (Total Contract Value)"
+    label: "Total TCV"
+    type: simple
+    type_params:
+      measure:
+        name: tcv_amount
+        fill_nulls_with: 0
+
+  - name: subscription_count
+    description: "Number of Subscriptions"
+    type: simple
+    label: "Subscription Count"
+    type_params:
+      measure: subscription_count
+
+  - name: deal_count
+    description: "Number of Deals"
+    type: simple
+    label: "Deal Count"
+    type_params:
+      measure: deal_count
