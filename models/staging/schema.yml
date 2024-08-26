@@ -19,7 +19,7 @@ models:
           - unique
           - not_null
 
-  - name: stg_hubspot_deals
+  - name: stg_hubspot_Deals_Masters
     description: Staged Hubspot deals data
     columns:
       - name: dealname
