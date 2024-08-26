@@ -8,28 +8,35 @@ semantic_models:
     entities:
       - name: invoice_number
         type: primary
+        expr: invoiceNumber
       - name: account_number
         type: foreign
+        expr: accountNumber
       - name: product_number
         type: foreign
+        expr: productNumber
 
     dimensions:
       - name: invoice_date
         type: time
+        expr: invoiceDate
         type_params:
           time_granularity: day
         label: "Date of Invoice"
       - name: account_name
         type: categorical
+        expr: accountName
         label: "Account Name"
       - name: product_name
         type: categorical
+        expr: productName
         label: "Product Name"
       - name: currency
         type: categorical
         label: "Currency"
       - name: product_category
         type: categorical
+        expr: productCategory
         label: "Product Category"
 
     measures:
@@ -47,9 +54,10 @@ semantic_models:
       - name: line_total
         description: "Total for the line item"
         agg: sum
+        expr: lineTotal
       - name: invoice_count
         description: "Number of invoices"
-        expr: invoice_number
+        expr: invoiceNumber
         agg: count_distinct
 
   - name: younioum_subscriptions
@@ -61,25 +69,32 @@ semantic_models:
     entities:
       - name: order_number
         type: primary
+        expr: orderNumber
       - name: account_number
         type: foreign
+        expr: account_number
       - name: product_number
         type: foreign
+        expr: productNumber
 
     dimensions:
       - name: order_date
         type: time
+        expr: orderDate
         type_params:
           time_granularity: day
         label: "Date of Order"
       - name: account_name
         type: categorical
+        expr: account_name
         label: "Account Name"
       - name: product_name
         type: categorical
+        expr: product_name
         label: "Product Name"
       - name: order_type
         type: categorical
+        expr: orderType
         label: "Order Type"
       - name: status
         type: categorical
@@ -100,7 +115,7 @@ semantic_models:
         expr: acv_base_currency_amount
       - name: subscription_count
         description: "Number of subscriptions"
-        expr: order_number
+        expr: orderNumber
         agg: count_distinct
 
   - name: hubspot_deals
@@ -112,10 +127,12 @@ semantic_models:
     entities:
       - name: deal_name
         type: primary
+        expr: dealname
 
     dimensions:
       - name: deal_created_at
         type: time
+        expr: deal_createdat
         type_params:
           time_granularity: day
         label: "Deal Created Date"
@@ -138,7 +155,7 @@ semantic_models:
     measures:
       - name: deal_count
         description: "Number of deals"
-        expr: deal_name
+        expr: dealname
         agg: count_distinct
 
 metrics:
