@@ -4,7 +4,7 @@ SELECT
     description,
     effectiveStartDate,
     effectiveEndDate,
-    cancelationDate,
+    cancellationDate,
     orderDate,
     noticePeriodDate,
     lastRenewalDate,

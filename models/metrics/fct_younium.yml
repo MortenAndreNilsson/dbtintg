@@ -56,7 +56,7 @@ semantic_models:
     defaults:
       agg_time_dimension: order_date
     description: "Younioum subscriptions view. One row per subscription."
-    model: ref('stg_younioum_subscriptions')
+    model: ref('stg_younium_subs')
 
     entities:
       - name: order_number
