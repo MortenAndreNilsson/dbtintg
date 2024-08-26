@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_younioum_subscriptions
+  - name: stg_younium_subs
     description: Staged Younioum subscriptions data
     columns:
       - name: orderNumber
