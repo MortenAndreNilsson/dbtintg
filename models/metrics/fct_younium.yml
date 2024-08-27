@@ -39,6 +39,11 @@ semantic_models:
         type: categorical
         expr: productCategory
         label: "Product Category"
+      - name: invoice_price
+        type: categorical
+        expr: price
+        label: "price"
+      
 
     measures:
       - name: total_amount
@@ -102,24 +107,42 @@ semantic_models:
         type: categorical
         expr: status
         label: "Status"
+      - name: charge_number
+        type: categorical
+        expr: chargeNumber
+        label: "charge_number"
+      - name: charge_name
+        type: categorical
+        expr: charge_name
+        label: "charge_name"
+      - name: price_model
+        type: categorical
+        expr: priceModel
+        label: "price_model"
+
 
     measures:
       - name: cmrr_amount
         description: "CMRR base currency amount"
-        agg: sum
+        agg: max
         expr: cmrr_base_currency_amount
       - name: tcv_amount
         description: "TCV base currency amount"
-        agg: sum
+        agg: max
         expr: tcv_base_currency_amount
       - name: acv_amount
         description: "ACV base currency amount"
-        agg: sum
+        agg: max
         expr: acv_base_currency_amount
       - name: subscription_count
         description: "Number of subscriptions"
         expr: orderNumber
         agg: count_distinct
+      - name: charge_quantity
+        description: "Number of quantity on charges"
+        expr: charge_quanitty
+        agg: sum
+
 
   - name: hubspot_deals
     defaults:
