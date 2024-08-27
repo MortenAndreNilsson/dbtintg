@@ -140,9 +140,8 @@ semantic_models:
         agg: count_distinct
       - name: charge_quantity
         description: "Number of quantity on charges"
-        expr: charge_quanitty
+        expr: charge_quanity
         agg: sum
-
 
   - name: hubspot_deals
     defaults:
@@ -254,3 +253,10 @@ metrics:
     label: "Deal Count"
     type_params:
       measure: deal_count
+      
+  - name: charge_count
+    description: "Number of quantity on charges"
+    type: simple
+    label: "Charge Quantity"
+    type_params:
+      measure: charge_quantity
