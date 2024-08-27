@@ -140,7 +140,7 @@ semantic_models:
         agg: count_distinct
       - name: charge_quantity
         description: "Number of quantity on charges"
-        expr: charge_quanity
+        expr: charge_quantity
         agg: sum
 
   - name: hubspot_deals
