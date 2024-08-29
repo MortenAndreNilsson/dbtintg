@@ -23,26 +23,26 @@ semantic_models:
         type_params:
           time_granularity: day
         label: "Date of Invoice"
-      - name: account_name
+      - name: invo_account_name
         type: categorical
         expr: accountName
-        label: "Account Name"
-      - name: product_name
+        label: "invo_Account Name"
+      - name: invo_product_name
         type: categorical
         expr: productName
-        label: "Product Name"
-      - name: currency
+        label: "invo_Product Name"
+      - name: invo_currency
         type: categorical
         expr: currency
-        label: "Currency"
-      - name: product_category
+        label: "invo_Currency"
+      - name: invo_product_category
         type: categorical
         expr: productCategory
-        label: "Product Category"
-      - name: invoice_price
+        label: "invo_Product Category"
+      - name: invo_invoice_price
         type: categorical
         expr: price
-        label: "price"
+        label: "invo_price"
       
 
     measures:
@@ -91,34 +91,34 @@ semantic_models:
         type_params:
           time_granularity: day
         label: "Date of Order"
-      - name: account_name
+      - name: saccount_name
         type: categorical
         expr: account_name
-        label: "Account Name"
-      - name: product_name
+        label: "sAccount Name"
+      - name: sproduct_name
         type: categorical
         expr: product_name
-        label: "Product Name"
-      - name: order_type
+        label: "sProduct Name"
+      - name: sorder_type
         type: categorical
         expr: orderType
-        label: "Order Type"
-      - name: status
+        label: "sOrder Type"
+      - name: sstatus
         type: categorical
         expr: status
-        label: "Status"
+        label: "sStatus"
       - name: charge_number
         type: categorical
         expr: chargeNumber
         label: "charge_number"
-      - name: charge_name
+      - name: scharge_name
         type: categorical
         expr: charge_name
-        label: "charge_name"
-      - name: price_model
+        label: "scharge_name"
+      - name: sprice_model
         type: categorical
         expr: priceModel
-        label: "price_model"
+        label: "sprice_model"
 
 
     measures:
